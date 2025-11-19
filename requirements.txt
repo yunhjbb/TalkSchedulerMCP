@@ -1,2 +1,2 @@
 flask
-mcp==0.1.4
+mcp

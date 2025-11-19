@@ -1,18 +1,8 @@
-from mcp.types import Tool, ToolDefinition, ToolInputSchema
+from mcp.server import tool
 
-def get_tools():
-    return [
-        Tool(
-            name="add_numbers",
-            description="두 숫자를 더한다.",
-            input_schema=ToolInputSchema(
-                type="object",
-                properties={
-                    "a": {"type": "number"},
-                    "b": {"type": "number"},
-                },
-                required=["a", "b"]
-            ),
-            func=lambda args: {"result": args["a"] + args["b"]},
-        )
-    ]
+@tool()
+def add_numbers(a: int, b: int):
+    """두 수를 더합니다."""
+    return {"result": a + b}
+
+TOOLS = [add_numbers]
